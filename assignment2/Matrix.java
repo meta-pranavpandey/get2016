@@ -10,6 +10,8 @@ import java.util.Scanner;
 /**
  * @author Nikhil
  *Matrix class holds all the Functionalities to evaluate the Transpose and Multiplication
+ *matrix_1 stores the First Matrix
+ *
  */
 public class Matrix {
 
@@ -29,7 +31,13 @@ public class Matrix {
 		return firstMatrix;
 	}
 
-	//Transpose Operation
+	/**
+	 * 
+	 * @param firstMatrix
+	 * @param r1 Row
+	 * @param c1 column
+	 * @return Transposed Matrix
+	 */
 	public int[][] transpose(int firstMatrix[][],int r1,int c1){
 		int transMatrix[][] =new int[c1][r1];//transMatrix is a temporary Matrix
 		for (int index = 0; index <r1; index++) {
@@ -41,13 +49,22 @@ public class Matrix {
 
 		return transMatrix;
 	}
-	//Multiplication Operation
+	/**
+	 * Multiplication Operation
+	 * @param first First Matrix
+	 * @param second Second Matrix
+	 * @param row1 Row
+	 * @param col1 Column
+	 * @param row2 Row 
+	 * @param col2 Column
+	 * @return Multiplied Result
+	 */
 	public int[][] multiplication(int first[][], int second[][], int row1,
 			int col1, int row2, int col2) {
 		int [][]tempMatrix = new int [row1][col2];
 		for (int i = 0; i < row1; i++) {
 			for (int j = 0; j < col2; j++) {
-				tempMatrix[i][j] = 0;
+				//tempMatrix[i][j] = 0;
 				for (int k = 0; k < row2; k++) {
 					tempMatrix[i][j] += first[i][k] * second[k][j];
 				}
@@ -56,7 +73,10 @@ public class Matrix {
 		return tempMatrix;
 	}
 
-	//Display Matrix Function
+	/**
+	 * It performs the Print Operations
+	 * @param displayMatrix Matrix to be Displayed 
+	 */
 	public void Display(int displayMatrix[][]){
 		//Printing 
 		for(int index = 0; index<displayMatrix.length; index++ ){
@@ -68,17 +88,13 @@ public class Matrix {
 		}
 	}
 
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Matrix matrixOperations = new Matrix();
 		//String choiceCharacter = null;
 		int row_1,column_1,row_2,column_2,choice;
 		do{
 			/**************************************************************************************
-			 **************************************MAIN MENU*********************************************
+			 *******************************MAIN MENU*********************************************
 			 **************************************************************************************/
 			System.out.print("\n\tMatrix Menu \n\t Press 1 for Multiplication  \n\t Press 2 for Transpose ");
 			System.out.print("\n\t Press 3 for Display Transpose Result\n\t Press 4 to Display Multiplication\n\t Result Press 5 to Exit");
@@ -101,16 +117,17 @@ public class Matrix {
 				row_2 = input.nextInt();
 				System.out.println("Enter the column size of 2nd Matrix");
 				column_2 = input.nextInt();
-				matrix_2 = new int[row_2][column_2];
-				matrix_2 = matrixOperations.getInput(matrix_2, row_2, column_2);
-				System.out.println("Enter the Second Matrix :");
+
 				if(column_1!=row_2){
 					System.out.println("Multiplication not Possible");
 					System.exit(0);
 				}
 				else{
+					matrix_2 = new int[row_2][column_2];
 					multipleResult = new int[row_1][column_2];
-					multipleResult= matrixOperations.multiplication(matrix_1, matrix_2, row_1, column_1, row_2, column_1);
+					System.out.println("Enter the Second Matrix :");
+					matrix_2 = matrixOperations.getInput(matrix_2, row_2, column_2);
+					multipleResult= matrixOperations.multiplication(matrix_1, matrix_2, row_1, column_1, row_2, column_2);
 					//System.out.println("You wish to continue Y or N");
 					//choiceCharacter = input.next();
 				}
@@ -125,7 +142,6 @@ public class Matrix {
 				//Input The Matrix_1
 				System.out.println("Enter the First Matrix :");
 				matrix_1 = matrixOperations.getInput(matrix_1,row_1,column_1);
-
 				transposedMatrix = new int[column_1][row_1];
 				transposedMatrix = matrixOperations.transpose(matrix_1, row_1, column_1);
 				//System.out.println("You wish to continue Y or N");
