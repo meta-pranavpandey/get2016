@@ -1,0 +1,10 @@
+1.	Veg 
+1.1	Matar Paneer
+1.2	Khadhai Panner
+2.	Non-Veg Food
+2.1	Butter Chicken 
+2.2 Chicken Masala
+3.	Drinks
+3.1	Water
+3.2	Soft Drinks
+4.	Exit
