@@ -1,5 +1,5 @@
 /**
- * This class hold the all Actions performed by on the MenuItems
+ * This class hold the all Actions performed by the user on the MenuItems
  */
 package assignment1;
 
